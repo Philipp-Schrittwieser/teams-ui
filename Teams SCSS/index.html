@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="stylesheet" href="WB-Teams.css">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+   <title>Teams-Chat</title>
+
+   <style>      
+
+
+   </style>
+
+</head>
+
+<body>
+
+<!-- <div class="warning">
+   <div>
+      <p>Please use this App with a device width of at least 500px. </p>
+   </div>
+</div> -->
+  
+<div class="app">
+   
+      <!-- Chat-Bereich -->
+   
+      <div class="chat-area">
+   
+   
+         <header class="header-chat-area">
+   
+            <div class="header-chat-area-LEFT">
+               <div class="gruppenbild"></div>
+               <div><p class="group-name">English F5</p></div>
+               <div class="pen"></div>
+               <div class="header-chat-area-LEFT-text-border">
+                  <p class="header-chat-area-LEFT-text">Chat</p></div>
+               <div class="header-chat-area-LEFT-text-border" id="cont-dateien">
+                  <p class="header-chat-area-LEFT-text" id="dateien">Dateien</p></div>
+               <div><p id="plus-icon">+</p></div>
+            </div>
+   
+            <div class="header-chat-area-RIGHT">
+               <div id="header-right-pic1"></div>
+               <div id="group-members"></div>
+            </div>
+   
+   
+         </header>
+   
+   
+            <!-- Datum -->
+   
+            <div class="date-area">
+               <div class="lineMessenger"> <hr class="lineElement"> </div>
+               <div> <p class="dateANDtime">21. Dezember</p> </div>
+               <div class="lineMessenger"> <hr class="lineElement"> </div>
+            </div>
+   
+   
+            <!-- Message von extern -->
+   
+            <div class="profileANDtextboxMessenger">
+   
+            <div class="profileMessenger">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="Profiles/1neu.PNG">
+                  <div class="icon-busy-border-teams">
+                     <img class="icon-busy" <img src="data:image/png;base64,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">
+                  </div>
+               </div>
+   
+            </div>
+   
+            <div class="textboxMessenger">
+   
+               <div>
+                  <p class="nameMessenger">Sophia Wald</p>
+                  <p class="dateANDtime">21.12. 11:37</p>
+               </div>
+   
+               <div> <p>Wie sind Webseiten eigentlich aufgebaut?</p></div>
+   
+            </div>
+   
+            </div>
+   
+   
+            <!-- Datum -->
+   
+            <div class="date-area">
+               <div class="lineMessenger"> <hr class="lineElement"> </div>
+               <div> <p class="dateANDtime">22. Dezember</p> </div>
+               <div class="lineMessenger"> <hr class="lineElement"> </div>
+            </div>
+   
+   
+            <!-- Message von INTERN -->
+   
+            <div class="align-textboxMessengerME">
+               <div class="textboxMessengerME">
+   
+                  <div>
+                     <p class="dateANDtimeME">22.12. 14:08</p>
+                  </div>
+   
+                  <div> <p>Gute Frage! Ich antworte Dir gleich..</p></div>
+   
+               </div>
+            </div>
+   
+            <!-- (noch eine) Message von INTERN -->
+   
+            <div class="align-textboxMessengerME" style="margin-bottom:0;">
+               <div class="textboxMessengerME">
+   
+                  <div>
+                     <p class="dateANDtimeME">22.12. 13:55</p>
+                  </div>
+   
+                  <div> <p>Okay, eine kurze Erklärung: <br>
+                     <br>
+                     Um Webseiten zu "programmieren" benötigst Du Kenntnisse über HTML (Inhalt), CSS (Darstellung) und Java Script (Logik). <br>
+                     <br>
+                     Sobald Du die Grundlagen verstanden hast, kannst Du dir mit sogenannten Frameworks das Leben einfacher machen. <br>
+                     <br>
+                     Für CSS gibt es SASS, Tailwind oder Bootsstrap (unter anderem) und für JavaScript gibt es zum Beispiel React. </p></div>
+   
+               </div>
+            </div>
+   
+             <!-- Datum -->
+   
+             <!-- <div class="date-area">
+               <div class="lineMessenger"> <hr class="lineElement"> </div>
+               <div> <p class="dateANDtime">23. Dezember</p> </div>
+               <div class="lineMessenger"> <hr class="lineElement"> </div>
+            </div> -->
+   
+             <!-- Message von extern -->
+   
+             <!-- <div class="profileANDtextboxMessenger">
+   
+               <div class="profileMessenger">
+   
+                  <div class="cont-profile-icon-teams">
+                     <img class="profile-icon-teams" src="Profiles/5neu.PNG">
+                     <div class="icon-busy-border-teams">
+                        <img class="icon-busy" <img src="data:image/png;base64,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">
+                     </div>
+                  </div>
+   
+               </div>
+   
+               <div class="textboxMessenger">
+   
+                  <div>
+                     <p class="nameMessenger">Katy Perry</p>
+                     <p class="dateANDtime">23.12. 17:10</p>
+                  </div>
+   
+                  <div>
+                  <p>Wow! Das klingt ja spannend! <br>
+                     <br>
+                     Jetzt weiß ich meine eigene Webseite noch viel mehr zu schätzen!.
+                  </p>
+                  </div>
+   
+               </div> -->
+   
+               </div>
+   
+         
+   
+   
+   
+       <!-- Chat-Nachrichten-Bereich -->
+   
+   
+       <div class="chat-area-eingabeundicons">
+   
+         <input class="chat-area-eingabe"
+         type="text"
+         placeholder="Eine neue Nachricht eingeben"
+         >
+         </input>
+   
+         <div class="icons-below-chat-area">
+            <div id="icons-below-chat-areaLEFT"></div>
+            <div id="icons-below-chat-areaRIGHT"></div>
+         </div>
+   
+      </div>
+   
+   
+      <!-- Das ist der GESAMTE-HEADER -->
+   
+      <div class="header">
+   
+         <div class="header-left">
+            <p class="teams-text">Microsoft Teams</p>
+         </div>
+   
+         <div class="header-middle">
+   
+            <input class="search-bar" type="text"
+            placeholder="Suche">
+   
+            <div class="cont-loupe">
+               <img class="loupe-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEJUlEQVR4nO1aT4hVVRj/BjWjRAZKKmgRtdKlLWol6U43IjmBK0FyUmQ2vci55/e7fIr/IqNwlZQYbvNPSG1MUFvkbNyYtHYzTlBOTYgEJSbfe1d4njl35r3xnXvPMPcHZ/fe/X3nd77z3e/PFWnQ4KmRZdlLAHYA+JzkJZK/kpwi+SeA30jeAvA9yWPOuW2qOiyLHa1W6/k8z0dJ/kzyIcn/+1j/FkK9Nzo6ukIWE1T1OQAE8Eefmy5bkwB2q+pySR0ktwC4PaCN++umc269pAhVfaa433O6uokD4CyAwyRbdkUAfGR3H8B5AHfm+f9/9ntJCaq6CsCP82yaqvp6L8/LsmwdyUNFkCx75pkkroSqriI5UWLkHQA7F2ro2NjYSgD7AEyXPP9srSJox+3LTv60qq4eEM+Ldj1KeE5JXUDnzvsGPbCIHYFuiOT+UIwBMCZVwzm32TfGApRz7t2YvCTfD/D+Y3FDKn7P3w6cRIyTnwWSWYD7unlJVa7P0J2X6jAE4GLAhu2VpLfwMjyL9oMKeL1CVV8mOeMJcCs6cd7J7X332yk1oEigfFveiUrKTmHzRJJT17u4xBu/iVrScnYEptQIkl94XnA32oEA2BFwuTekRuR5/pZvU7SCCV7iY+4vNWNkZGQZgL88u/ZGIWOnQfFELi4JAMAVzwtORCFip43VTXREEgDJk97BXIxFNOURfSgJoOgtdNt1LQoRyd8ruWt9AoDzPHMiChFnNyhakgDsKnoHcyUKEYBfPKJPJAEA+Nqz63wUIpI/eB5wQRIAyZ88AT6LRXTME2BSaobNDADc8+zaFYXMObfNz7oqbUQEAGBDoCxeG4VMVYeLiU23ux2WGgHgS2/zU1EbI/SyQSNU1WelBhQHMlNJFvgYNqsLFET7pAYAOODbkuf5m9GDDslJT4DpLMvWSIVQ1dcA3PcEuFoJOYDdAS/4rqqmpFWAttmADZuqUn+5DSoD0Tergt/e8wHuc1IlnHPrbQ7gGfHQeoYxeQF8HDj5aVV9NSZvz01JE6Fokw1FaHyETt46QFulLgA4EzLKPndxzr0yqIAXuvNd69AgeJ4mHnxbIsLf5rI2QV7gs4ftVReI9kmKcGoO4+5aguKce9tcuYfcfoNleCZgDxtPQwSDTWltUDmPkTNFD+9kUcfvB3CU5FdW1QUKm1kBz+588QFFeiJkWbbOBpV9nlyv61x3tE9WBOnM8rfbrG5AG79aluSkLEIbeZ5vtHFVEQf62bS13070ktsnL4LBgl+RPO21jRXj7csAblhMKD6BOW7NjIXU84tChNggebAkcH4qSwVsRJBGBEPjCdKI0EbjCdKI0EbjCdKI0EbjCdKI0EbjCdKIMGcVmef5HlniIkzIUgI9EaJ+c5wqAHxg/Uzb/Pj4+At129NAEsEjFsgYrlgg+JkAAAAASUVORK5CYII="
+               >
+            </div>
+   
+         </div>
+   
+         <div class="white-space">
+   
+         </div>
+   
+         <div class="hover" style="
+         display:flex;
+         justify-content: right;
+         height:100%;
+         width: 245px;
+         ">
+   
+         <div class="header-right">
+   
+            <div class="three-dots">
+               <img class="threedots-icon" src="threedots-WHITE.svg">
+               </div>
+   
+            <div class="cont-schulenandprofile">
+   
+            <div class="cont-schulen-text">
+   
+            <p class="schulen-text">Schulen Wien</p>
+   
+            </div>
+   
+            <div class="cont-profile-icon">
+               <img class="profile-icon" src="rightheader/6940ea37-d791-40e7-ba23-d29b6fbc815c.jpg">
+               <div class="icon-x-border">
+               <div class="cont-profile-icon-x">
+                  <img class="icon-x" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR4nO2VSw7CMBBDcwkqOCJcwl6ML0gXHKcoKmKB0mZmaNVNZ5NKif3ycZpSzooWyTuAIaoDMFRtb9CD5ERyjEAwm49VWz0WB0q6AHh+IC8zu/XMfzUAriGBrUDC5hGIsuYeiP41X4NoK/NWQji33+9MnD0rmTaZeQ9gjggfv0VqHGjmMrrNy0JfGOKJorKQSM4VhWQukSKQ3X/Xuz84Z5VGvQEDKzvScczVBAAAAABJRU5ErkJggg=="
+                  > </div>
+               </div>
+            </div>
+            </div>
+         </div>
+   
+         </div>
+   
+      </div>
+   
+      <!-- Das ist das Linke Icon vom HEADER -->
+   
+      <div class="side-icon">
+         <img class="waffle-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAABrklEQVR4nO3cQU7bQBiG4azSwyQ9alEbUXoZ4BJtDwJ02epDVr2BkBDPTJN6/DwSUqQs/pFHDHZ4ldUKAAAAAE6U5GOSL0l+JPk1/gyvPyfZtr6Q6XzelIV9SHKT5E8OG977mmRtXvuLf5/T3dVsQjqfV7LAb5nu2rx2Z+KxY+eQ30k25lUa/yCVujKvUpKfFRvw3bxKSZ4qNuDRvMtuwIN5lRxBbY/Ykg0YngBLfTKv0vD4Pd5Snus2dNvzvCLjxwtT7cxrZHjsHh+/T3Vb+dHAuud5NYu8fufXdXhv1+jDuHXP82oWuhmecIc7gPEW9Wl8ffUvzsR0Pg8AAAAAFttqRhu6jBa1ZHHdtprRhi6rRZ26OG3oJf8prw1t276WbIA29MJhlja0Yft67g3QhtZyBB2lDZ1bizpZ761mtKHLa1FLFth1qxlt6D5t6EJbzWhDAQAAAPhf9N5qRhv6lzZ0Qa1mtKEvaUNfXgxt6Nu0oXP8ntLJhFlHaUPn9j2lk2lD27avJRsgTz9MG/qKNnRurWa0ofu0oQtrNaMN3acNXWirGW0oAAAAAKs2ngFAW4nXM1f1rQAAAABJRU5ErkJggg=="
+         >
+      </div>
+   
+   
+      <!-- Hier beginnt die SIDEBAR 2 -->
+   
+      <div class="sidebar2-shadow"> </div>
+   
+      <div class="sidebar2">
+   
+         <div class="sidebar2-1">
+   
+         <div class="sidebar2-1-EINS">
+            <p class="chat-text">Chat</p>
+            <img class="dropdown-sidebar2" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAABWklEQVR4nO3avUoDQRRA4aPFHfXFBRGsLfQhLMI+kY2F4A+WkYWtQv5A9+7M7PlgId3ce9hkAwlIkiRJkiRJkiRJkiRJkupxMV1proFH4At4A+6AQr8KcA+8Az/AE3CTcfAYebtzbTqNXabddvd9nvvg8a3zuefgHmOXA5HH6xu4nHuAjwOH9xS7HIm8nRrM7uHIAD3ELicib6cGVQzSauxS224BvJwYaACuaEfUulO1g/W4S/UD9rRDM4P2MHtzA9PmzM0NHg3N2uwC0cCMzS8SFc/WzUJR4UzdLRYVzdLtglHBDCliwUVXE3nJhWNtkZdYfLWRMwOsPnJGCCMnBDFyQhgjJwSKtT/4zhV/CGXkhNjhnTz/nR1Gzvm5f9Pp3x1SxRl3qw++hWMPfruYP7aRE2IbOSH24MfF/LEHI/+/AtwCr9M1vvYrnCRJkiRJkiRJkiRJkiSJZL/HXxTfMSb/iQAAAABJRU5ErkJggg=="
+            >
+         </div>
+   
+         <div class="sidebar2-1-ZWEI">
+            <div class="sb2-1-1-wlan-icon"></div>
+            <div class="sb2-1-2-pen-in-box"></div>
+         </div>
+   
+         </div>
+   
+         <div class="sidebar2-2">
+            <div class="sorted-down2-2"></div>
+            <div><p class="angeheftet2">Angeheftet</p></div>
+         </div>
+   
+         <div class="sidebar2-3">
+   
+            <div class="profile">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="rightheader/6940ea37-d791-40e7-ba23-d29b6fbc815c.jpg">
+   
+                  <div class="icon-busy-border-teams">
+                     <img class="icon-busy" src="data:image/png;base64,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">
+                  </div>
+   
+               </div>
+   
+            </div>
+   
+            <div class="teamsname-teamsdatum-teamstext">
+   
+               <div class="teamsname-teamsdatum">
+                  <div class="teamsname">
+                     <p style="font-size:inherit;">
+                        Philipp Schrittwieser (Sie)
+                     </p></div>
+                  <div class="teamsdatum">
+                     <p style="font-size:inherit;
+                     color:inherit;">
+                     17.12.</p></div>
+               </div>
+   
+               <div class="teamstext">Sie: Frohe Weihnachten</div>
+   
+            </div>
+   
+   
+         </div>
+   
+         <div class="sidebar2-4">
+            <div class="sorted-down2-4"></div>
+            <div style="padding-bottom:0px;"><p class="angeheftet4">Zuletzt</p></div>
+         </div>
+   
+         <div class="sidebar2-5">
+   
+            <div class="profile">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="Profiles/1neu.PNG">
+                  <div class="icon-busy-border-teams">
+                     <img class="icon-busy" <img src="data:image/png;base64,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">
+                  </div>
+               </div>
+   
+            </div>
+   
+            <div class="teamsname-teamsdatum-teamstext">
+   
+               <div class="teamsname-teamsdatum">
+                  <div class="teamsname">
+                     <p style="font-size:inherit;">
+                        Sophia Wald
+                     </p></div>
+                  <div class="teamsdatum">
+                     <p style="font-size:inherit;
+                     color:inherit;">
+                     12:34</p></div>
+               </div>
+   
+               <div class="teamstext">I'm an alien in New York</div>
+   
+            </div>
+   
+         </div>
+         <div class="sidebar2-6">
+   
+            <div class="profile">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="Profiles/2neu.PNG">
+   
+                  <div class="icon-busy-border-teams2">
+                     <img class="icon-busy" src="data:image/png;base64,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">
+   
+                  </div>
+               </div>
+   
+            </div>
+   
+            <div class="teamsname-teamsdatum-teamstext">
+   
+               <div class="teamsname-teamsdatum">
+                  <div class="teamsname">
+                     <p style="font-size:inherit;">
+                        Anne Frank
+                     </p></div>
+                  <div class="teamsdatum">
+                     <p style="font-size:inherit;
+                     color:inherit;">
+                     9:49</p></div>
+               </div>
+   
+               <div class="teamstext">Die letzte Freiheit ist der Wille</div>
+   
+            </div>
+   
+         </div>
+   
+         <div class="sidebar2-7">
+   
+            <div class="profile">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="Profiles/3neu.PNG">
+                  <div class="icon-x-border-teams">
+                  <div class="cont-profile-icon-x-teams">
+                     <img class="icon-x" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR4nO2VSw7CMBBDcwkqOCJcwl6ML0gXHKcoKmKB0mZmaNVNZ5NKif3ycZpSzooWyTuAIaoDMFRtb9CD5ERyjEAwm49VWz0WB0q6AHh+IC8zu/XMfzUAriGBrUDC5hGIsuYeiP41X4NoK/NWQji33+9MnD0rmTaZeQ9gjggfv0VqHGjmMrrNy0JfGOKJorKQSM4VhWQukSKQ3X/Xuz84Z5VGvQEDKzvScczVBAAAAABJRU5ErkJggg=="
+                     > </div>
+                  </div>
+               </div>
+   
+            </div>
+   
+            <div class="teamsname-teamsdatum-teamstext">
+   
+               <div class="teamsname-teamsdatum">
+                  <div class="teamsname">
+                     <p style="font-size:inherit;">
+                        Paul Peter
+                     </p></div>
+                  <div class="teamsdatum">
+                     <p style="font-size:inherit;
+                     color:inherit;">
+                     23.12.</p></div>
+               </div>
+   
+               <div class="teamstext">Manchmal wünsch ich mir</div>
+   
+            </div>
+   
+         </div>
+   
+         <div class="sidebar2-8">
+   
+            <div class="profile">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="Profiles/4neu.PNG">
+                  <div class="icon-x-border-teams">
+                  <div class="cont-profile-icon-x-teams">
+                     <img class="icon-x" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR4nO2VSw7CMBBDcwkqOCJcwl6ML0gXHKcoKmKB0mZmaNVNZ5NKif3ycZpSzooWyTuAIaoDMFRtb9CD5ERyjEAwm49VWz0WB0q6AHh+IC8zu/XMfzUAriGBrUDC5hGIsuYeiP41X4NoK/NWQji33+9MnD0rmTaZeQ9gjggfv0VqHGjmMrrNy0JfGOKJorKQSM4VhWQukSKQ3X/Xuz84Z5VGvQEDKzvScczVBAAAAABJRU5ErkJggg=="
+                     > </div>
+                  </div>
+               </div>
+   
+            </div>
+   
+            <div class="teamsname-teamsdatum-teamstext">
+   
+               <div class="teamsname-teamsdatum">
+                  <div class="teamsname">
+                     <p style="font-size:inherit;">
+                        Maria Neult
+                     </p></div>
+                  <div class="teamsdatum">
+                     <p style="font-size:inherit;
+                     color:inherit;">
+                     22.12.</p></div>
+               </div>
+   
+               <div class="teamstext">I want it that way</div>
+   
+            </div>
+   
+         </div>
+   
+         <div class="sidebar2-9">
+   
+            <div class="profile">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="profiles/5neu.PNG">
+                  <div class="icon-busy-border-teams">
+                     <img class="icon-busy" <img src="data:image/png;base64,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">
+                  </div>
+               </div>
+   
+            </div>
+   
+            <div class="teamsname-teamsdatum-teamstext">
+   
+               <div class="teamsname-teamsdatum">
+                  <div class="teamsname">
+                     <p style="font-size:inherit;">
+                        Katy Perry
+                     </p></div>
+                  <div class="teamsdatum">
+                     <p style="font-size:inherit;
+                     color:inherit;">
+                     19.12.</p></div>
+               </div>
+   
+               <div class="teamstext">I kissed a girl and I liked it</div>
+   
+            </div>
+   
+         </div>
+   
+         <div class="sidebar2-10">
+   
+            <div class="profile">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="profiles/6neu.PNG">
+                  <div class="icon-x-border-teams">
+                  <div class="cont-profile-icon-x-teams">
+                     <img class="icon-x" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR4nO2VSw7CMBBDcwkqOCJcwl6ML0gXHKcoKmKB0mZmaNVNZ5NKif3ycZpSzooWyTuAIaoDMFRtb9CD5ERyjEAwm49VWz0WB0q6AHh+IC8zu/XMfzUAriGBrUDC5hGIsuYeiP41X4NoK/NWQji33+9MnD0rmTaZeQ9gjggfv0VqHGjmMrrNy0JfGOKJorKQSM4VhWQukSKQ3X/Xuz84Z5VGvQEDKzvScczVBAAAAABJRU5ErkJggg=="
+                     > </div>
+                  </div>
+               </div>
+   
+            </div>
+   
+            <div class="teamsname-teamsdatum-teamstext">
+   
+               <div class="teamsname-teamsdatum">
+                  <div class="teamsname">
+                     <p style="font-size:inherit;">
+                        Avicii
+                     </p></div>
+                  <div class="teamsdatum">
+                     <p style="font-size:inherit;
+                     color:inherit;">
+                     19.12.</p></div>
+               </div>
+   
+               <div class="teamstext">Feeling my way through the darkness</div>
+   
+            </div>
+   
+         </div>
+   
+         <div class="sidebar2-11">
+   
+            <div class="profile">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="profiles/7neu.PNG">
+                  <div class="icon-busy-border-teams2">
+                     <img class="icon-busy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFoUlEQVR4nO1dSW9cRRBuQCxBcZypGnZDOCDBnSOIRWIRYt//QgICEQFnrlzYAhwsIAeOvhAC8nTNRPIlMT6wJEZEgLBBwYQDJBCQENHrSqN6M1LCYnvw6zfV/aY/qS+jsafr+3p7VdX1jMnIyMjIyMjIyMjIyIgIni65uOi27nQET7OFN9nCPmdx0VlYcoTHHeHJQTtefmZxkQl78l1n4amC4A4/e+lF2nYkA7/3sguLDt7PFl/rE42nmNBXafI/SmEsvlp08T4/P7VJ286o4F8wZ/te60YmmHaEJ6oSvr4g8AdbnCkI7/Uz5hwzrvBz2y5whE84i8t1k76GGLJs7ZC+mHFaZpzF5xzBUS3i/yUEwVFn8Vnpm2kyZNo7wm+1CefV94sV14VHTdPgO5NXM8EH2gTzsM3C+/7DrdtME1BYfECOieqk0v9dlvCEs63HTarws9ecL8dJbSK5coNpscWkBN+bQGfxI33yMNRsOODtFjApwHfx8sETqTpxHFIEi4d9r3WViRne4nWO8Ig2WVzfTDgiNpoY4ffBFY7wO22SuP6ZsBLdCWmw5h/WJodHJgJ8LY5CEwPkhNCkDZeHFYFwPorTEVt4Q5sM1mu7VMkvCB5RGn1HCgsP+z04Ia0geNARfKnRF+mHmnvBWfxVg3z/H2dy+cwRfj/y/lj8RWVT1vLtFGuMOHGkafSJLewdKfll1ErDUEIvS85q/fKzsEWrX+LpHZ0/X/G8b9aBVr8ksDSScKcjfF7LSI5YgFIEgp0jOPPDD1kAXE2AH2udBRLD1SSfI58BpQgd3F5b9oJmAJ1TEcDCkvfmrOACFBZv1TaOExBAmu+2bw4uABPu1jaMExGALb4dlHzZWDSeejlRASSeHHQz1nzw4gQFkFbY9j3BBIgpuG4SEYAtvhRMgJhivCYRAZyFz4KQL5GfEFnKYycAIfu5ze3KAkh+vrYxnKAA0ooO3FZZgPJyRATGcIICOMInKwtQ3kyJwBhOUIAgIcvyyo++IT5JASxSZQGcxc/VDaE0BXCEh6oLEFmylUlJAIvL1QWw+HNKAjiLCxEJ8FN1AQhPpiSA77UmY0kUcwR/Nk4Av0ZQ/h8iLDRDgMiWoKIDDw3T7xhECLUERXWpzln4ys9Nbk1BhFCbcFTHUO5P7U+GvbGiuScEOYbG9iDGp0fXgpAb9UwI8SAWmyuC05oJuxrnjOOERAjijIvNHc0JiRDEHS31dmIKyHAie0IZkOlNoGlaSJITmQnOwqcmFKTYkTa5XN9MWIw+KC+VprSJ5bpEoNYNdfSh6LTvbmRiFgdejsqcV4Lfok7Miik1kWuYCcGLR1l8y4RG0cFbtAnlGkTwszAV+jc9tW+qKT0dlpomAhO+E/S3CL6pJT1dIAXutMnkjYuwKBuuDKQzRv7uZC5onK50GE+xPd6QEPC7XCWqSeSV2ssXSHVBbRI50uYsPGNGdE01qiANR9DKq0mjqspbUOsubYM5shb0PsAwkOv52kZzNA3eM6OGFKiQQhX6xqNqk5KcarXkykq4CbiquS7yLZ4aNkujNkjYTZsI1muvGG2U5QsID4zh6N/vZ8x5JgaUfnXCQ2NDPuEX0RVyHauylb1IC7iOReHWDl5roi9d3MDlyEnpYtu60qSAQQG9+QaRvz+6NX89+I/NuUzwYvrPCTAdzWlno3Umkn2BQ6f1mGkCxG2Rlu8I9kR70gnguliOdtRbWAqaThIj+vEE2Kld/I//RjyuSDBlrN6yN6i6vkMz0F++yK2D26Oogq4JT+3rB++PrP0+Wj/BDN6VzOXashdShZ+f2iSRJbb4siM4KBnGlQknZKndI7masr6P1WsLq8LPbW4XFm6Xiw5M+DoTdkth+q+zPXbG62yP9T+Dg3ItSL4rf1OO8hA1ezIyMjIyMjIyMjIyMkw4/AWvS/sGUXMzggAAAABJRU5ErkJggg==">
+                  </div>
+               </div>
+   
+            </div>
+   
+            <div class="teamsname-teamsdatum-teamstext">
+   
+               <div class="teamsname-teamsdatum">
+                  <div class="teamsname">
+                     <p style="font-size:inherit;">
+                        Christoph Heinzer
+                     </p></div>
+                  <div class="teamsdatum">
+                     <p style="font-size:inherit;
+                     color:inherit;">
+                     18.12.</p></div>
+               </div>
+   
+               <div class="teamstext">Hey, gib Gas heut!</div>
+   
+            </div>
+   
+         </div>
+   
+         <div class="sidebar2-12">
+   
+            <div class="profile">
+   
+               <div class="cont-profile-icon-teams">
+                  <img class="profile-icon-teams" src="profiles/8neu.PNG">
+                  <div class="icon-x-border-teams">
+                  <div class="cont-profile-icon-x-teams">
+                     <img class="icon-x" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApklEQVR4nO2VSw7CMBBDcwkqOCJcwl6ML0gXHKcoKmKB0mZmaNVNZ5NKif3ycZpSzooWyTuAIaoDMFRtb9CD5ERyjEAwm49VWz0WB0q6AHh+IC8zu/XMfzUAriGBrUDC5hGIsuYeiP41X4NoK/NWQji33+9MnD0rmTaZeQ9gjggfv0VqHGjmMrrNy0JfGOKJorKQSM4VhWQukSKQ3X/Xuz84Z5VGvQEDKzvScczVBAAAAABJRU5ErkJggg=="
+                     > </div>
+                  </div>
+               </div>
+   
+            </div>
+   
+            <div class="teamsname-teamsdatum-teamstext">
+   
+               <div class="teamsname-teamsdatum">
+                  <div class="teamsname">
+                     <p style="font-size:inherit;">
+                        Conny Fürnhof
+                     </p></div>
+                  <div class="teamsdatum">
+                     <p style="font-size:inherit;
+                     color:inherit;">
+                     18.12.</p></div>
+               </div>
+   
+               <div class="teamstext">Machen wir mal wieder etwas?</div>
+   
+            </div>
+   
+         </div>
+   
+      </div>
+   
+   
+      <!-- Hier beginnt die SIDEBAR 1 -->
+   
+      <div class="sidebar-shadow"></div>
+   
+      <div class="sidebar-chat-border"></div>
+   
+       <div class="sidebar">
+   
+         <div class="icons-sidebar-left-aktivität">
+            <div class="iconsleft-aktivität">
+               <div class="icons-aktivität"> </div>
+            <p class="text-icons-sidebar">Aktivität</p>
+            </div>
+         </div>
+   
+         <div class="icons-sidebar-left-chat">
+            <div class="iconsleft-chat">
+               <div class="icons-chat"> </div>
+            <p id="chat-text-id" >Chat</p>
+            </div>
+         </div>
+   
+         <div class="icons-sidebar-left-teams">
+            <div class="iconsleft-teams">
+               <div class="icons-teams"> </div>
+            <p class="text-icons-sidebar">Teams</p>
+            </div>
+         </div>
+   
+         <div class="icons-sidebar-left-aufgaben">
+            <div class="iconsleft-aufgaben">
+               <div class="icons-aufgaben"></div>
+            <p class="text-icons-sidebar">Aufgaben</p>
+         </div>
+         </div>
+   
+         <div class="icons-sidebar-left-kalender">
+            <div class="iconsleft-kalender">
+               <div class="icons-kalender"></div>
+            <p class="text-icons-sidebar">Kalender</p>
+         </div>
+         </div>
+   
+         <div class="icons-sidebar-left-anrufe">
+            <div class="iconsleft-anrufe">
+               <div class="icons-anrufe"></div>
+            <p class="text-icons-sidebar">Anrufe</p>
+         </div>
+         </div>
+   
+         <div class="icons-sidebar-left-dateien">
+            <div class="iconsleft-dateien">
+               <div class="icons-dateien"></div>
+            <p class="text-icons-sidebar">Dateien</p>
+         </div>
+         </div>
+   
+         <div class="icons-sidebar-left-punkte">
+            <div class="iconsleft-punkte">
+               <div class="icons-punkte"></div>
+         </div>
+         </div>
+   
+         <div class="icons-sidebar-left-apps">
+            <div class="iconsleft-apps">
+               <div class="icons-apps"></div>
+            <p class="text-icons-sidebar">Apps</p>
+         </div>
+         </div>
+   
+         <div class="icons-sidebar-left-lückenfüller"></div>
+   
+         <div class="icons-sidebar-left-hilfe">
+            <div class="iconsleft-hilfe">
+               <div class="icons-hilfe"></div>
+            <p class="text-icons-sidebar">Hilfe</p>
+            </div>
+         </div>
+   
+         </div>
+      </div>
+</div>
+
+</body>
+
+</html>
